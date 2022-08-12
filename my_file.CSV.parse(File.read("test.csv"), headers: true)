@@ -1,0 +1,23 @@
+
+[1mFrom:[0m /home/tsykvas/ruby/ROR/viktors_task/app/controllers/customers_controller.rb:28 CustomersController#file:
+
+    [1;34m18[0m: [32mdef[0m [1;34mfile[0m
+    [1;34m19[0m:   @file_row = []
+    [1;34m20[0m:   my_file = params[[33m:file[0m]
+    [1;34m21[0m:   [1;34m#binding.pry[0m
+    [1;34m22[0m:   counter = [1;34m0[0m
+    [1;34m23[0m:   [1;34;4mCSV[0m.foreach(my_file.path) [32mdo[0m |person|
+    [1;34m24[0m:     puts person.join([31m[1;31m'[0m[31m [1;31m'[0m[31m[0m) [32mif[0m counter > [1;34m0[0m
+    [1;34m25[0m:     counter += [1;34m1[0m
+    [1;34m26[0m:     puts [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m
+    [1;34m27[0m:   [32mend[0m
+ => [1;34m28[0m:   binding.pry
+    [1;34m29[0m: 
+    [1;34m30[0m:   [1;34m#CSV.read(params[:file])[0m
+    [1;34m31[0m:   [1;34m#file_row = [][0m
+    [1;34m32[0m:   [1;34m#my_file = params[:file][0m
+    [1;34m33[0m:   [1;34m#CSV.read(params[:file]) #читаємо файл за бажанням[0m
+    [1;34m34[0m:   [1;34m#[0m
+    [1;34m35[0m: 
+    [1;34m36[0m: [32mend[0m
+

@@ -1,0 +1,23 @@
+<h1>ACCOUNTS</h1>
+
+<table class="col-md-6 col-md-offset-3">
+    <tr>
+        <th>Label</th>              
+        <th>IBAN</th>                      
+        <th>CURRENCY</th>
+        <th>BALANCE</th>
+        <th>ID</th>
+        <th>link</th>
+    </tr>
+    <% @account.each do |item| %>
+        <tr>
+            <td><%= item.label %></td>   
+            <td><%= item.iban %></td>
+            <td><%= item.currency %></td>
+            <td><%= item.currency_balance %></td>
+            <td><%= item.external_id %></td>
+            <td><%= link_to item.label, account_path(item) %></td>
+        </tr>
+    <% end %>
+ </table>
+ <%= button_to new_path, new_path, method: 'show', data: { confirm: 'Are you sure?' } %>

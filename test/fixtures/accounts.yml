@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: MyString
+  iban: MyString
+  currency: MyString
+  currency_balance: 9.99
+  external_id: 1
+
+two:
+  label: MyString
+  iban: MyString
+  currency: MyString
+  currency_balance: 9.99
+  external_id: 1

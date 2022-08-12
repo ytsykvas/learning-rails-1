@@ -1,0 +1,10 @@
+<h1>Update account</h1>
+<%= form_for @account do |form| %>
+    <%= form.text_field :label, placeholder: "LABEL:" %>
+    <%= form.text_field :iban, placeholder: "IBAN:" %>
+    <%= form.text_field :currency, placeholder: "CURRENCY:" %>
+    <%= form.text_field :currency_balance, placeholder: "BALANCE:" %>
+    <%= form.text_field :external_id, placeholder: "ID:" %>
+    <%= form.submit %>
+<%= end %>
+
