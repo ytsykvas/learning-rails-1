@@ -1,0 +1,28 @@
+<h1>ALL TRANSACTIONS:</h1>
+<table class="col-md-6 col-md-offset-3">
+    <tr>
+        <th><%= link_to "NEW TRANSACTION", new_account_transaction_path%></th>
+    </tr>
+    <tr>
+        <th>ID (account)</th>
+        <th>ID (external)</th>
+        <th>Currency</th>
+        <th>BALANCE</th>
+        <th>Label</th>
+        <th>Type</th>
+        <th>DATE</th>
+    </tr>
+    <% @transactions.each do |transaction| %>
+        <tr>
+            <td><%= transaction.account_id %></td> 
+            <td><%= transaction.external_id %></td>
+            <td><%= transaction.currency %></td>
+            <td><%= transaction.currency_balance %></td>
+            <td><%= transaction.label %></td>
+            <td><%= transaction.transaction_type %></td>  
+            <td><%= l(transaction.created_at, format: :short) %></td> 
+            <td><%= button_to "delete", account_transaction_path(transaction.account_id, transaction.id), deta: {turbo_method: :delete} %>
+        </tr>
+    <% end %>
+</table>
+

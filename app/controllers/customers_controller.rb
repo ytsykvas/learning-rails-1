@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'csv'
 class CustomersController < ApplicationController
   skip_before_action :verify_authenticity_token
-  #protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
   def new
     @customer = Customer.new
   end
@@ -18,16 +20,15 @@ class CustomersController < ApplicationController
   def file
     @file_row = []
     my_file = params[:file]
-    #binding.pry
+    # binding.pry
     counter = 0
     table = CSV.parse(File.read(params[:file]), headers: true)
     puts "Names of our users:\n#{table.by_col[0]}"
   end
 
-
   private
+
   def user_params
     params.require(:customer).permit(:first_name, :last_name, :date_of_birth)
   end
 end
-

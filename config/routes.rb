@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'pages#home'
   post 'file' => 'customers#file'
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   get 'file_form' => 'customers#file_form'
   resources :customers
 
-  resources :accounts
-  get 'create' => 'accounts#create'
-  get 'new' => 'accounts#new'
+  resources :accounts do
+    resources :transactions
+  end
+  
 end

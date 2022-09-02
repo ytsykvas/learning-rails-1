@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,33 +12,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_125326) do
-  create_table "account_fields", force: :cascade do |t|
-    t.string "label"
-    t.string "iban"
-    t.string "currency"
-    t.float "currency_balance"
-    t.integer "external_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[7.0].define(version: 20_220_815_194_952) do
+  create_table 'account_fields', force: :cascade do |t|
+    t.string 'label'
+    t.string 'iban'
+    t.string 'currency'
+    t.float 'currency_balance'
+    t.integer 'external_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "accounts", force: :cascade do |t|
-    t.string "label"
-    t.string "iban"
-    t.string "currency"
-    t.decimal "currency_balance"
-    t.integer "external_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'accounts', force: :cascade do |t|
+    t.string 'label'
+    t.string 'iban'
+    t.string 'currency'
+    t.decimal 'currency_balance'
+    t.integer 'external_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.date "date_of_birth"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'customers', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.date 'date_of_birth'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
+  create_table 'transactions', force: :cascade do |t|
+    t.integer 'account_id'
+    t.integer 'external_id'
+    t.string 'currency'
+    t.decimal 'currency_balance'
+    t.string 'label'
+    t.string 'transaction_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
 end

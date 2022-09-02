@@ -2,8 +2,10 @@
 <html>
   <head>
   <title>ViktorsTask</title>
+  
     <%= stylesheet_link_tag 'application', media: 'all',
 'data-turbolinks-track' => true %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
@@ -11,6 +13,12 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+      <% if flash[:notice].present? %>
+        <p><%= flash.now[:notice]%></p>
+      <% elsif flash[:alert].present?%>
+        <p><%= flash.now[:alert]%></p>
+      <% end %>
+      <% flash[:notice].present? %>
       <%= yield %>
     </div>
   </body>

@@ -1,0 +1,21 @@
+<h1>Create a new transaction:</h1>
+<%= form_for @transaction, :url => account_transactions_path do |form| %>
+    <%= form.label :external_id, "id" %>
+    <%= form.number_field :external_id, placeholder: "id" %>
+
+
+    <%= form.label :label, "LABEL" %>
+    <%= form.text_field :label, placeholder: "LABEL" %>
+
+    <%= form.label :currency, "CURRENCY" %>
+    <%= form.text_field :currency, placeholder: "USD, EU, UAH, USDT, etc.:" %>
+
+    <%= form.label :transaction_type, "TYPE" %>
+    <%= form.text_field :transaction_type, placeholder: "IN/OUT:" %>
+
+    <%= form.label :currency_balance, "BALANCE" %>
+    <%= form.text_field :currency_balance, placeholder: "$ $ $" %>
+
+    <%= form.submit 'CREATE'%>
+<% end %>
+

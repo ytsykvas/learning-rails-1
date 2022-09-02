@@ -14,8 +14,6 @@
             <td><%= @account.currency %></td>
             <td><%= @account.currency_balance %></td>
             <td><%= @account.external_id %></td>
-            <td><%= button_to 'Edit', edit_account_path(@account), method: 'get'%></td>
-            <td><%= button_to 'Remove', account_path(@account), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
         </tr>
     </table>
 </div>

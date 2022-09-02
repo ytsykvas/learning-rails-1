@@ -1,23 +1,24 @@
 <h1>ACCOUNTS</h1>
-
 <table class="col-md-6 col-md-offset-3">
+    <tr>
+        <th><%= link_to "NEW ACCOUNT", new_account_path %></th>
+    </tr>
     <tr>
         <th>Label</th>              
         <th>IBAN</th>                      
         <th>CURRENCY</th>
         <th>BALANCE</th>
         <th>ID</th>
-        <th>link</th>
     </tr>
-    <% @account.each do |item| %>
+    <% @accounts.each do |account| %>
         <tr>
-            <td><%= item.label %></td>   
-            <td><%= item.iban %></td>
-            <td><%= item.currency %></td>
-            <td><%= item.currency_balance %></td>
-            <td><%= item.external_id %></td>
-            <td><%= link_to item.label, account_path(item) %></td>
+            <td><%= account.label %></td>   
+            <td><%= link_to account.iban, account_path(account) %></td>
+            <td><%= account.currency %></td>
+            <td><%= link_to account.currency_balance, account_transactions_path(account) %></td>
+            <td><%= account.external_id %></td>
+            <td><%= button_to 'Edit', edit_account_path(account), method: 'get'%></td>
+            <td><%= button_to 'Remove', accounts_path(account),  data: { turbo_confirm: 'Are you sure?' },  method: 'destroy' %></td>
         </tr>
     <% end %>
  </table>
- <%= button_to new_path, new_path, method: 'show', data: { confirm: 'Are you sure?' } %>
