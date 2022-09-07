@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_815_194_952) do
+ActiveRecord::Schema[7.0].define(version: 20_220_902_194_831) do
   create_table 'account_fields', force: :cascade do |t|
     t.string 'label'
     t.string 'iban'
@@ -26,8 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 20_220_815_194_952) do
   create_table 'accounts', force: :cascade do |t|
     t.string 'label'
     t.string 'iban'
-    t.string 'currency'
-    t.decimal 'currency_balance'
+    t.decimal 'balance'
     t.integer 'external_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false

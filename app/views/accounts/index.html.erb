@@ -6,7 +6,6 @@
     <tr>
         <th>Label</th>              
         <th>IBAN</th>                      
-        <th>CURRENCY</th>
         <th>BALANCE</th>
         <th>ID</th>
     </tr>
@@ -14,11 +13,13 @@
         <tr>
             <td><%= account.label %></td>   
             <td><%= link_to account.iban, account_path(account) %></td>
-            <td><%= account.currency %></td>
-            <td><%= link_to account.currency_balance, account_transactions_path(account) %></td>
+            <td><%= link_to account.balance, account_transactions_path(account) %></td>
             <td><%= account.external_id %></td>
             <td><%= button_to 'Edit', edit_account_path(account), method: 'get'%></td>
-            <td><%= button_to 'Remove', accounts_path(account),  data: { turbo_confirm: 'Are you sure?' },  method: 'destroy' %></td>
+
+            <td><%= button_to 'Delete', accounts_path(account),  method: :delete %></td>
+            <td><%= link_to "Delete", accounts_path(account), data: { method: :delete } %></td>
+            <td><%= button_to 'Remove', account_path(account),  data: { turbo_confirm: 'Are you sure?' },  method: 'destroy' %></td>
         </tr>
     <% end %>
  </table>

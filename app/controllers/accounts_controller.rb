@@ -15,14 +15,20 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.create(account_params)
-    redirect_to account_path(@account)
+    if @account.save
+      redirect_to account_path(@account)
+      flash[:success] = 'account saved'
+    else
+      redirect_to new_account_path
+      flash[:alert] = 'UNCORRECT. CHECK ALL FIELDS !'
+    end
   end
 
   def edit; end
 
   def update
     @account.update(account_params)
-    redirect_to accounts_path
+    redirect_to account_path
   end
 
   def destroy
@@ -33,7 +39,7 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:label, :iban, :currency, :currency_balance, :external_id)
+    params.require(:account).permit(:label, :iban, :balance, :external_id)
   end
 
   def find_account
