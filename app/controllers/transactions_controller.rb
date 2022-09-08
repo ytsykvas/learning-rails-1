@@ -14,22 +14,24 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Account.find(params[:account_id]).transactions.build(transaction_params)
+    @account = Account.find(params[:account_id])
+    @transaction = @account.transactions.build(transaction_params)
     balance = if @transaction.transaction_type == 'payin'
-                if @transaction.currency == 'EURO'
+                if @transaction.currency == 'EU'
                   @transaction.account.balance + @transaction.currency_balance
                 else
                   @transaction.account.balance + @transaction.currency_balance * 0.9
                 end
-              elsif @transaction.currency == 'EURO'
-                @transaction.account.balance + @transaction.currency_balance
               else
-                @transaction.account.balance - @transaction.currency_balance * 0.9
+                if @transaction.currency == 'EU'
+                  @transaction.account.balance - @transaction.currency_balance
+                else
+                  @transaction.account.balance - @transaction.currency_balance * 0.9
+                end
               end
-    @transaction.account.update(balance:)
-    @transaction.save
+    @transaction.account.update(balance: balance)
     if @transaction.save
-      redirect_to account_transactions_path(Account.find(params[:account_id]))
+      redirect_to account_transactions_path(@account)
       flash[:success] = 'transaction is created'
     else
       redirect_to new_account_transaction_path
