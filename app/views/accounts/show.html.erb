@@ -4,15 +4,13 @@
         <tr>
             <th>Label</th>              
             <th>IBAN</th>                      
-            <th>CURRENCY</th>
             <th>BALANCE</th>
             <th>ID</th>
         </tr>
         <tr>
             <td><%= @account.label %></td>   
             <td><%= @account.iban %></td>
-            <td><%= @account.currency %></td>
-            <td><%= @account.currency_balance %></td>
+            <td><%= @account.balance %></td>
             <td><%= @account.external_id %></td>
         </tr>
     </table>

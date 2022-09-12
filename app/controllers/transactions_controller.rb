@@ -14,12 +14,32 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Account.find(params[:account_id]).transactions.create(transaction_params)
-    redirect_to account_transactions_path, notice: 'transaction is created'
+    @account = Account.find(params[:account_id])
+    @transaction = @account.transactions.build(transaction_params)
+    balance = if @transaction.transaction_type == 'payin'
+                if @transaction.currency == 'EU'
+                  @transaction.account.balance + @transaction.currency_balance
+                else
+                  @transaction.account.balance + @transaction.currency_balance * 0.9
+                end
+              else
+                if @transaction.currency == 'EU'
+                  @transaction.account.balance - @transaction.currency_balance
+                else
+                  @transaction.account.balance - @transaction.currency_balance * 0.9
+                end
+              end
+    @transaction.account.update(balance: balance)
+    if @transaction.save
+      redirect_to account_transactions_path(@account)
+      flash[:success] = 'transaction is created'
+    else
+      redirect_to new_account_transaction_path
+      flash[:alert] = 'UNCORRECT. CHECK ALL FIELDS'
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @transaction.update(@transaction_params)
@@ -27,7 +47,8 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy
-    redirect_to account_transactions_path, notice: 'transaction is destroyed'
+    redirect_to account_transactions_path
+    flash[:success] = 'transaction is destroyed'
   end
 
   private

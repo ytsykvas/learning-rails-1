@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'iban-tools'
 gem 'jquery-rails'
 gem 'rubocop-rails', require: false
 gem 'sassc-rails', '>= 2.1.0'
