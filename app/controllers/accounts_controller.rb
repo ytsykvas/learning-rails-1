@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.create(account_params)
+    @account = Account.new(account_params)
     if @account.save
       redirect_to account_path(@account)
       flash[:success] = 'account saved'
