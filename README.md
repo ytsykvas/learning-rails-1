@@ -1,25 +1,14 @@
-# README
+Ruby version 3.1.2
+Rails version 7.0.3.1
+Database sqlite3 v1.4
+Use gem 'bcrypt' fot account verification.
+Database initialization
+bootstrap 5.2.0 for frontend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# learning-rails-1
+This is my educational pet project where:
+1) studied user`s registration and autentification with gem 'bcrypt'
+- model for user`s account -  User.
+- controller for user's registration - customers_controller.rb
+2) Learned base about creating transactions (transactions_controller + Transaction model.
+3) Learned about ActiveRecord associations and querying.
+4) Tryed PostgreSQL.
