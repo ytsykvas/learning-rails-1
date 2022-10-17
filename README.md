@@ -1,8 +1,13 @@
 Ruby version 3.1.2
+
 Rails version 7.0.3.1
+
 Database sqlite3 v1.4
+
 Use gem 'bcrypt' fot account verification.
+
 Database initialization
+
 bootstrap 5.2.0 for frontend
 
 This is my educational pet project where:
